@@ -4,12 +4,14 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
 module.exports = {
     create: function(req, res) {
         User.create(_.omit(req.allParams(), 'id'))
         .then(function(user, err) {
-            return UserService.returnUserAndJwtToken(user);
+            return MailService.activationMail(user)
+            .then(function() {
+                return UserService.returnUserAndJwtToken(user);
+            });
         })
         .then(res.created)
         .catch(res.serverError);

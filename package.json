@@ -33,5 +33,10 @@
     "url": "git://github.com/neozaru/sailsTest.git"
   },
   "author": "neozaru",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "email-templates": "^2.0.1",
+    "handlebars": "^4.0.5",
+    "sails-service-mailer": "^3.1.0"
+  }
 }
